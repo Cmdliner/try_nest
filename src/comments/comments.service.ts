@@ -14,11 +14,11 @@ export class CommentsService {
     }
 
     async findByPost(id: string): Promise<Comment[]> {
-        return this.commentModel.find({ post: id });
+        return this.commentModel.find({ post: id }).exec();
     }
 
     async remove(id: string): Promise<Comment> { 
-        return this.commentModel.findByIdAndDelete(id);
+        return this.commentModel.findByIdAndDelete(id).exec();
     }
 
 }
