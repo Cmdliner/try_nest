@@ -28,8 +28,8 @@ export class PostsController {
         return this.postsService.update(id, updatePostDto);
     }
 
-    @Delete()
-    remove(id: Types.ObjectId): Promise<PostModel> {
+    @Delete(':id')
+    remove(@Param('id') id: Types.ObjectId): Promise<PostModel> {
         return this.postsService.remove(id)
     }
 }
