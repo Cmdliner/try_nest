@@ -6,7 +6,7 @@ import { CreatePostDto } from './dto/create-post.dto';
 
 @Injectable()
 export class PostsService {
-    constructor(@InjectModel(Post.name) private postModel: Model<PostDocument>) {}
+    constructor(@InjectModel(Post.name) private postModel: Model<PostDocument>) { }
 
     async create(createPostDto: CreatePostDto) {
         return this.postModel.create(createPostDto);
@@ -21,7 +21,7 @@ export class PostsService {
     }
 
     async update(id: Types.ObjectId, updatePostDto: CreatePostDto) {
-        return this.postModel.findByIdAndUpdate(id, updatePostDto, {new: true}).exec()
+        return this.postModel.findByIdAndUpdate(id, updatePostDto, { new: true }).exec()
     }
 
     async remove(id: Types.ObjectId) {

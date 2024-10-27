@@ -3,7 +3,6 @@ import { PostsController } from './posts.controller';
 import { PostsService } from './posts.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Post, PostSchema } from './schemas/posts.schema';
-import { AuthModule } from 'src/auth/auth.module';
 
 
 @Module({
@@ -13,4 +12,5 @@ import { AuthModule } from 'src/auth/auth.module';
   controllers: [PostsController],
   providers: [PostsService]
 })
+
 export class PostsModule{}

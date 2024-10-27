@@ -1,8 +1,9 @@
-import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { CreatePostDto } from './dto/create-post.dto';
 import { Post as PostModel } from './schemas/posts.schema';
 import { Types } from 'mongoose';
+import { ParseObjectIdPipe } from 'src/common/parse-objectid.pipe';
 
 @Controller('posts')
 export class PostsController {
@@ -19,7 +20,7 @@ export class PostsController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: Types.ObjectId): Promise<PostModel> {
+    findOne(@Param('id', ParseObjectIdPipe) id: Types.ObjectId): Promise<PostModel> {
         return this.postsService.findOne(id);
     }
 

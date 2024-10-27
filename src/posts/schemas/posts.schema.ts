@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Document } from "mongoose";
+import { Document, Schema as MongooseSchema } from "mongoose";
 
 export type PostDocument = Post & Document;
 
@@ -11,6 +11,9 @@ export class Post {
 
     @Prop({ required: true })
     content: string;
+
+    @Prop({ required: true, ref: "User" })
+    owner: MongooseSchema.Types.ObjectId;
 
     @Prop({ required: true, default: Date.now })
     createdAt: string;
